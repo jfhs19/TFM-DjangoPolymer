@@ -1,0 +1,21 @@
+{
+  "name": "workspace",
+  "authors": [
+    "Juan F Hernandez <jfhs19@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "google-map": "GoogleWebComponents/google-map#^1.1.10",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^1.1.4"
+  }
+}

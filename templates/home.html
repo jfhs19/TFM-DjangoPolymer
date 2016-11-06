@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <title>TFM Juan Francisco Hernandez</title>
+  {% load staticfiles %}
+  <script   src="{% static 'bower_components/webcomponentsjs/webcomponents-lite.min.js' %}"></script>
+  <link rel="import" href="{% static 'bower_components/google-map/google-map.html' %}">
+
+  <link rel="stylesheet" src="{% static 'css/map.css' %}"></script>
+  <link rel="stylesheet" src="{% static 'css/bootstrap-social.css' %}"></script>
+  <link rel="import" href="{% static 'bower_components/polymer/polymer.html' %}">
+  <link rel="import" href="{% static 'bower_components/paper-toolbar/paper-toolbar.html'  %}">
+   <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-social.min.css"/>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+
+  <style>
+    google-map {
+      margin: 0;
+      height: 90vh;
+    }
+  </style>
+</head>
+<body background="{% static 'background.jpg' %}"> 
+ {% if user and not user.is_anonymous %}
+
+<paper-toolbar>
+  <paper-icon-button icon="menu"><a href="{% url 'user-logout' %}">
+   <img src="https://cdn2.iconfinder.com/data/icons/picons-basic-2/57/basic2-010_exit_logout-32.png"/>
+  </a></paper-icon-button>
+  <span class="title">TFM</span>
+  <paper-icon-button icon="refresh"></paper-icon-button>
+  <paper-icon-button icon="add">{{ user.get_full_name }}</paper-icon-button>
+</paper-toolbar>
+ <google-map id='map' latitude="42.8169" longitude="-1.6432" zoom="15">
+  </google-map>
+    <script src="{% static 'js/map.js' %}"></script>
+ {% else %}
+ <div style=" background: #CEE3F6;
+    margin: 20% 15% 50% 15%;
+    border-color: white;
+    border-style: outset;
+    border-radius: 10px !important;
+    border-spacing: 5px;
+    text-align: center;
+    padding: 10px;" id="info" class="info">
+  <h1>TFM Juan Francisco Hernandez</h1>
+  <p>Desarrollo de  componentes web basados en Angular JS, Polymer, Node.js, Django y MongoDB para el pre-procesado, consumo y homogeneización de fuentes Open Data gubernamentales</p>
+  <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}" class="btn btn-block btn-social btn-twitter">
+    <span class="fa fa-twitter"></span> Login con Twitter</a>
+  <a "{% url 'social:begin' 'facebook' %}?next={{ request.path }}" class="btn btn-block btn-social btn-facebook">
+    <span class="fa fa-facebook"></span> Login con Facebook</a>
+</div>
+ 
+ {% endif %}
+</body>
+</html>
